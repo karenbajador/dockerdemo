@@ -1,0 +1,22 @@
+# Activate environment
+conda activate flaskdockerapp
+
+# Run app
+python app.py
+
+# Build the image
+docker build -t flaskdockerapp:v0.1 .
+
+
+# Run the image
+docker run -d -p5000:5000 --name flaskdockerapp flaskdockerapp:v0.1
+
+
+# Run the image in a different port
+docker run -d -p5001:5000 --name flaskdockerapp flaskdockerapp:v0.1
+
+# Run the test
+ docker run -d --name flaskdockerapp_test flaskdockerapp:v0.1 pytest
+
+# Start container
+ docker start flaskdockerapp_test

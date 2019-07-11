@@ -1,0 +1,22 @@
+# Amend cfg file:
+load_examples = False
+executor = LocalExecutor
+sql_alchemy_conn = postgres://airflow:airflow@postgres:5432/airflow
+
+
+# Build the Docker image:
+docker build -t airflow .
+
+
+# Run the container:
+docker run -p 8080:8080 --name airflow_webserver --link airflow_postgres:postgres --rm  airflow
+
+
+# Running a postgres container:
+docker run -d -p5432:5432 -ePOSTGRES_USER=airflow -ePOSTGRES_PASSWORD=airflow -ePOSTGRES_DB=airflow --name airflow_postgres postgres:9.6
+
+
+
+
+
+

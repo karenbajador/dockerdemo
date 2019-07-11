@@ -1,0 +1,36 @@
+BUSYBOX EXAMPLE
+
+# Run busybox
+docker run busybox:1.24 echo "hello world"
+
+# Check images
+docker images
+
+# Run again
+
+# Print directories
+docker run busybox:1.24 ls /
+
+# Get inside container and create a file
+docker run -it busybox:1.24
+ls
+touch newfile.txt
+ls
+exit
+
+# Run it again
+docker run -it busybox:1.24
+exit
+
+
+# Running a detached container 
+docker run -d busybox:1.24 sleep 10
+
+# Remove container after running
+docker run -d --rm busybox:1.24 sleep 10
+
+# Give container a name
+docker run -d --rm --name hello_world busybox:1.24 sleep 10
+
+# Docker inspect!
+docker inspect <container_id>
